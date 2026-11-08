@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INITIAL D — Тогэ Рейсинг</title>
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-roboto@3.0.3/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-orbitron@4.0.0/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style/style.css">
+    
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+    <div class="loader-text">TOUGE KRSK</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Speed Lines Canvas -->
+<canvas id="speedCanvas"></canvas>
+
+<!-- Notification -->
+<div class="notification" id="notification">
+    <div class="notification-title" id="notifTitle"></div>
+    <div class="notification-text" id="notifText"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-logo" onclick="navigate('home')">INITIAL <span>D</span></div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+        <li><a onclick="navigate('home')" class="active" data-page="home">Главная</a></li>
+        <li><a onclick="navigate('accounts')" data-page="accounts">Аккаунты</a></li>
+        <li><a onclick="navigate('routes')" data-page="routes">Маршруты</a></li>
+        <li><a onclick="navigate('places')" data-page="places">Места</a></li>
+    </ul>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="float-el" style="top:8%;left:-3%;">峠</div>
+        <div class="float-el" style="bottom:8%;right:-3%;"> drift</div>
+        <div class="hero-content">
+            <div class="hero-subtitle">Легенда горных дорог</div>
+            <h1 class="hero-title glitch" data-text="TOUGE-KRSK">
+                TOUGE <span class="d-text">KRSK</span>
+            </h1>
+            <p class="hero-tagline">Проект D — Покори каждую гору</p>
+            <p class="hero-jp">山道は、俺たちのサーキットだ。— Горные дороги — наш трек.</p>
+            <div class="hero-cta">
+                <a class="btn-primary" onclick="navigate('places')">Исследовать места</a>
+                <a class="btn-secondary" onclick="navigate('routes')">Маршруты</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+    </section>
+
+    <!-- Speed -->
+    <section class="section section-alt" id="home-speed">
+        <div class="speed-container">
+            <div class="tachometer reveal">
+                <div class="tacho-ring"></div>
+                <div class="tacho-needle" id="tachoNeedle"></div>
+                <div class="tacho-center">
+                    <div class="tacho-value" id="speedValue">0</div>
+                    <div class="tacho-unit">КМ/Ч</div>
+                    <div class="tacho-rpm" id="rpmValue">0 ОБ/МИН</div>
+                </div>
+            </div>
+            <div class="speed-info reveal">
+                <h2>ПОЧУВСТВУЙ <span>СКОРОСТЬ</span></h2>
+                <p>Почувствуй адреналин тоге-рейсинга на горных перевалах Акины. Легендарная AE86 проходит каждый поворот, её двигатель 4A-GE раскручивается до 11 000 об/мин. Каждый занос — танец, каждый поворот — испытание мастерства.</p>
+                <div class="speed-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="240">0</div>
+                        <div class="stat-label">Лошадиных сил</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="11000">0</div>
+                        <div class="stat-label">Макс. обороты</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="86">0</div>
+                        <div class="stat-label">Легенда AE86</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars -->
+    <section class="section" id="home-cars">
+        <div class="section-header reveal">
+            <h2>ЛЕГЕНДАРНЫЕ <span>МАШИНЫ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">伝説の車たち</p>
+        </div>
+        <div class="cars-grid">
+            <div class="car-card reveal">
+                <div class="car-image" style="background:linear-gradient(135deg,#2a2a3e,#16213e)">
+                    <svg viewBox="0 0 400 200" fill="none"><rect x="50" y="80" width="300" height="70" rx="10" fill="#F5F5F5"/><rect x="80" y="50" width="200" height="40" rx="8" fill="#F5F5F5"/><rect x="90" y="55" width="80" height="30" rx="4" fill="#1A1A1A" opacity="0.8"/><rect x="180" y="55" width="80" height="30" rx="4" fill="#1A1A1A" opacity="0.8"/><rect x="50" y="140" width="300" height="10" rx="2" fill="#1A1A1A"/><circle cx="120" cy="155" r="25" fill="#1A1A1A"/><circle cx="120" cy="155" r="15" fill="#333"/><circle cx="120" cy="155" r="5" fill="#666"/><circle cx="280" cy="155" r="25" fill="#1A1A1A"/><circle cx="280" cy="155" r="15" fill="#333"/><circle cx="280" cy="155" r="5" fill="#666"/><rect x="55" y="100" width="15" height="8" rx="2" fill="#FFD60A"/><rect x="330" y="100" width="15" height="8" rx="2" fill="#E63946"/><text x="200" y="120" text-anchor="middle" font-family="Orbitron" font-size="14" font-weight="bold" fill="#333">AE86</text></svg>
+                    <div class="car-number">86</div>
+                </div>
+                <div class="car-details">
+                    <div class="car-name">TOYOTA SPRINTER TRUENO</div>
+                    <div class="car-model">AE86 GT-APEX</div>
+                    <div class="car-specs">
+                        <div class="spec"><span class="spec-label">Двигатель</span><span class="spec-value">4A-GE</span></div>
+                        <div class="spec"><span class="spec-label">Мощность</span><span class="spec-value">240 ЛС</span></div>
+                        <div class="spec"><span class="spec-label">Вес</span><span class="spec-value">940 КГ</span></div>
+                        <div class="spec"><span class="spec-label">Привод</span><span class="spec-value">FR</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-card reveal">
+                <div class="car-image" style="background:linear-gradient(135deg,#3e1a1a,#2e1621)">
+                    <svg viewBox="0 0 400 200" fill="none"><rect x="40" y="85" width="320" height="65" rx="12" fill="#E63946"/><rect x="70" y="55" width="220" height="38" rx="10" fill="#E63946"/><rect x="80" y="60" width="85" height="28" rx="5" fill="#1A1A1A" opacity="0.7"/><rect x="175" y="60" width="85" height="28" rx="5" fill="#1A1A1A" opacity="0.7"/><rect x="40" y="142" width="320" height="8" rx="2" fill="#1A1A1A"/><circle cx="115" cy="155" r="25" fill="#1A1A1A"/><circle cx="115" cy="155" r="15" fill="#333"/><circle cx="115" cy="155" r="5" fill="#666"/><circle cx="285" cy="155" r="25" fill="#1A1A1A"/><circle cx="285" cy="155" r="15" fill="#333"/><circle cx="285" cy="155" r="5" fill="#666"/><rect x="45" y="105" width="18" height="8" rx="2" fill="#FFD60A"/><rect x="337" y="105" width="18" height="8" rx="2" fill="#E63946"/><text x="200" y="120" text-anchor="middle" font-family="Orbitron" font-size="14" font-weight="bold" fill="white">FD3S</text></svg>
+                    <div class="car-number">FD</div>
+                </div>
+                <div class="car-details">
+                    <div class="car-name">MAZDA RX-7</div>
+                    <div class="car-model">FD3S TYPE RS</div>
+                    <div class="car-specs">
+                        <div class="spec"><span class="spec-label">Двигатель</span><span class="spec-value">13B-REW</span></div>
+                        <div class="spec"><span class="spec-label">Мощность</span><span class="spec-value">280 ЛС</span></div>
+                        <div class="spec"><span class="spec-label">Вес</span><span class="spec-value">1250 КГ</span></div>
+                        <div class="spec"><span class="spec-label">Привод</span><span class="spec-value">FR</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="car-card reveal">
+                <div class="car-image" style="background:linear-gradient(135deg,#1a2a3e,#0a1530)">
+                    <svg viewBox="0 0 400 200" fill="none"><rect x="35" y="80" width="330" height="70" rx="10" fill="#00B4D8"/><rect x="65" y="50" width="230" height="38" rx="10" fill="#00B4D8"/><rect x="75" y="55" width="90" height="28" rx="5" fill="#1A1A1A" opacity="0.7"/><rect x="175" y="55" width="90" height="28" rx="5" fill="#1A1A1A" opacity="0.7"/><rect x="35" y="142" width="330" height="8" rx="2" fill="#1A1A1A"/><circle cx="110" cy="155" r="25" fill="#1A1A1A"/><circle cx="110" cy="155" r="15" fill="#333"/><circle cx="110" cy="155" r="5" fill="#666"/><circle cx="290" cy="155" r="25" fill="#1A1A1A"/><circle cx="290" cy="155" r="15" fill="#333"/><circle cx="290" cy="155" r="5" fill="#666"/><rect x="40" y="105" width="18" height="8" rx="2" fill="#FFD60A"/><rect x="342" y="105" width="18" height="8" rx="2" fill="#E63946"/><text x="200" y="120" text-anchor="middle" font-family="Orbitron" font-size="14" font-weight="bold" fill="white">BNR32</text></svg>
+                    <div class="car-number">R</div>
+                </div>
+                <div class="car-details">
+                    <div class="car-name">NISSAN SKYLINE GT-R</div>
+                    <div class="car-model">BNR32</div>
+                    <div class="car-specs">
+                        <div class="spec"><span class="spec-label">Двигатель</span><span class="spec-value">RB26DETT</span></div>
+                        <div class="spec"><span class="spec-label">Мощность</span><span class="spec-value">280 ЛС</span></div>
+                        <div class="spec"><span class="spec-label">Вес</span><span class="spec-value">1530 КГ</span></div>
+                        <div class="spec"><span class="spec-label">Привод</span><span class="spec-value">AWD</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters -->
+    <section class="section section-alt" id="home-characters">
+        <div class="section-header reveal">
+            <h2>ЛЕГЕНДАРНЫЕ <span>ГОНЩИКИ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">伝説のドライバーたち</p>
+        </div>
+        <div class="characters-grid">
+            <div class="character-card reveal">
+                <div class="character-avatar" style="background:linear-gradient(135deg,#F5F5F5,#ccc)">拓</div>
+                <div class="character-name">ТАКУМИ ФУДЖИВАРА</div>
+                <div class="character-team">Akina SpeedStars → Project D</div>
+                <p class="character-desc">Главный герой. Доставщик тофу днём, непобедимый гонщик горных дорог ночью. За рулём легендарной панда-восьмёрки.</p>
+            </div>
+            <div class="character-card reveal">
+                <div class="character-avatar" style="background:linear-gradient(135deg,#E63946,#ff6b6b)">啓</div>
+                <div class="character-name">КЭЙСУКЕ ТАКАХАСИ</div>
+                <div class="character-team">Akagi Redsuns → Project D</div>
+                <p class="character-desc">Огненный специалист даунхилла. Жёлтая Mazda RX-7 FD3S — невероятное ускорение и горячий соревновательный дух.</p>
+            </div>
+            <div class="character-card reveal">
+                <div class="character-avatar" style="background:linear-gradient(135deg,#00B4D8,#48cae4)">涼</div>
+                <div class="character-name">РЁСУКЕ ТАКАХАСИ</div>
+                <div class="character-team">Akagi Redsuns → Project D</div>
+                <p class="character-desc">Блестящий стратег и основатель Project D. Известен как «Белая комета Акаги» за расчётный стиль вождения.</p>
+            </div>
+            <div class="character-card reveal">
+                <div class="character-avatar" style="background:linear-gradient(135deg,#FFD60A,#ffea00)">文太</div>
+                <div class="character-name">БУНТА ФУДЖИВАРА</div>
+                <div class="character-team">Бывшая легенда</div>
+                <p class="character-desc">Отец Такуми. Бывший гоночный легенда, который тайно тренировал сына годами доставок тофу на гору Акина.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="section" id="home-courses">
+        <div class="section-header reveal">
+            <h2>ГОРНЫЕ <span>ПЕРЕВАЛЫ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">峠道</p>
+        </div>
+        <div class="courses-grid">
+            <div class="course-card reveal">
+                <div class="course-bg" style="background:linear-gradient(135deg,#1a2a3a,#0a1520)"></div>
+                <div class="course-overlay">
+                    <div class="course-type">Даунхилл</div>
+                    <div class="course-name">ГОРА АКИНА</div>
+                    <div class="course-desc">Легендарная гора, где Такуми научился дрифтовать. Пять коварных шпилек, испытывающих мастерство каждого гонщика.</div>
+                    <div class="course-stats">
+                        <span class="course-stat">5.8 КМ</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">5 ШПИЛЕК</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">-560М</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card reveal">
+                <div class="course-bg" style="background:linear-gradient(135deg,#2a1a1a,#1a0a0a)"></div>
+                <div class="course-overlay">
+                    <div class="course-type">Даунхилл</div>
+                    <div class="course-name">ГОРА АКАГИ</div>
+                    <div class="course-desc">Домашняя трасса Redsuns. Более широкая и быстрая, вознаграждает мощностью и точной траекторией.</div>
+                    <div class="course-stats">
+                        <span class="course-stat">7.2 КМ</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">ВЫСОКАЯ СКОРОСТЬ</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">-620М</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card reveal">
+                <div class="course-bg" style="background:linear-gradient(135deg,#1a2a1a,#0a150a)"></div>
+                <div class="course-overlay">
+                    <div class="course-type">Даунхилл / Апхилл</div>
+                    <div class="course-name">МЁГИ</div>
+                    <div class="course-desc">Техничная гора с слепыми поворотами и крутыми уклонами. Известна сложной секцией у святилища Мёги.</div>
+                    <div class="course-stats">
+                        <span class="course-stat">6.5 КМ</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">ТЕХНИЧНАЯ</span>
+                        <span class="course-stat">•</span>
+                        <span class="course-stat">-480М</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eurobeat -->
+    <section class="section section-alt" id="home-music">
+        <div class="section-header reveal">
+            <h2>ЕВРОБИТ <span>ПЛЕЙЛИСТ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">ユーロビート</p>
+        </div>
+        <div class="playlist reveal">
+            <div class="track" onclick="toggleTrack(this)">
+                <button class="play-btn">▶</button>
+                <div class="track-number">01</div>
+                <div class="track-info">
+                    <div class="track-title">Deja Vu</div>
+                    <div class="track-artist">Dave Rodgers</div>
+                </div>
+                <div class="audio-bars paused"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+                <div class="track-duration">4:32</div>
+            </div>
+            <div class="track" onclick="toggleTrack(this)">
+                <button class="play-btn">▶</button>
+                <div class="track-number">02</div>
+                <div class="track-info">
+                    <div class="track-title">Running in the 90's</div>
+                    <div class="track-artist">Max Coveri</div>
+                </div>
+                <div class="audio-bars paused"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+                <div class="track-duration">4:48</div>
+            </div>
+            <div class="track" onclick="toggleTrack(this)">
+                <button class="play-btn">▶</button>
+                <div class="track-number">03</div>
+                <div class="track-info">
+                    <div class="track-title">Gas Gas Gas</div>
+                    <div class="track-artist">Manuel</div>
+                </div>
+                <div class="audio-bars paused"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+                <div class="track-duration">3:56</div>
+            </div>
+            <div class="track" onclick="toggleTrack(this)">
+                <button class="play-btn">▶</button>
+                <div class="track-number">04</div>
+                <div class="track-info">
+                    <div class="track-title">Space Boy</div>
+                    <div class="track-artist">Dave Rodgers</div>
+                </div>
+                <div class="audio-bars paused"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+                <div class="track-duration">5:12</div>
+            </div>
+            <div class="track" onclick="toggleTrack(this)">
+                <button class="play-btn">▶</button>
+                <div class="track-number">05</div>
+                <div class="track-info">
+                    <div class="track-title">Beat of the Rising Sun</div>
+                    <div class="track-artist">Dave Rodgers</div>
+                </div>
+                <div class="audio-bars paused"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+                <div class="track-duration">5:34</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section reveal">
+        <blockquote class="quote-text">
+            Горе не волнует твоё эго. Она уважает только тех, кто осмеливается раздвигать свои пределы.
+        </blockquote>
+        <div class="quote-author">— ТАКУМИ ФУДЖИВАРА</div>
+        <div class="quote-sub">山はエゴを気にしない。限界に挑戦する者だけを敬う。</div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section section-alt" id="home-story">
+        <div class="section-header reveal">
+            <h2>ИСТОРИЯ <span>ПРОЕКТА D</span></h2>
+            <div class="divider"></div>
+            <p class="sub">物語</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-title">Первый этап</div>
+                    <div class="timeline-desc">Такуми Фудживара пять лет доставляет тофу на гору Акина, неосознанно осваивая искусство дрифта на коварных шпильках горы.</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-title">Пробуждение AE86</div>
+                    <div class="timeline-desc">Когда лучший гонщик SpeedStars проигрывает таинственному «Призраку Акины» на Eight-Six, скрытые таланты Такуми раскрываются.</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1996</div>
+                    <div class="timeline-title">Второй этап</div>
+                    <div class="timeline-desc">Такуми сталкивается с новыми соперниками из Мёги и Акаги. Redsuns во главе с блестящим Рёсуке Такахаси — ультимативный вызов.</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-title">Project D</div>
+                    <div class="timeline-desc">Легендарная команда отправляется в своё путешествие. Специалисты даунхилла против апхилла. Каждая гора, каждый поворот, каждая победа.</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2001</div>
+                    <div class="timeline-title">Финальный этап</div>
+                    <div class="timeline-desc">Ультимативное противостояние на горе Акина. Такуми проходит финальное испытание — не только мастерства, но и сердца.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== ACCOUNTS PAGE ==================== -->
+<div class="page" id="page-accounts">
+    <section class="section" style="padding-top:120px">
+        <div class="section-header reveal">
+            <h2>АККАУНТЫ <span>ГОНЩИКОВ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">ドライバーのアカウント</p>
+        </div>
+        <div class="accounts-grid" id="accountsGrid">
+            <!-- Generated by JS -->
+        </div>
+    </section>
+</div>
+
+<!-- ==================== ROUTES PAGE ==================== -->
+<div class="page" id="page-routes">
+    <section class="section" style="padding-top:120px">
+        <div class="section-header reveal">
+            <h2>МАРШРУТЫ <span>ГОНЩИКОВ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">レーシングルート</p>
+        </div>
+        <div class="routes-container" id="routesList">
+            <!-- Generated by JS -->
+        </div>
+
+        <!-- Add Route Form -->
+        <div class="add-section reveal">
+            <h3>ДОБАВИТЬ <span>МАРШРУТ</span></h3>
+            <form id="routeForm" onsubmit="addRoute(event)">
+                <div class="form-group">
+                    <label class="form-label">Название маршрута</label>
+                    <input class="form-input" id="routeName" placeholder="Например: Ночной забег по Акине" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Гонщик</label>
+                        <select class="form-select" id="routeDriver" required>
+                            <option value="">Выберите гонщика</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Тип маршрута</label>
+                        <select class="form-select" id="routeType" required>
+                            <option value="">Выберите тип</option>
+                            <option value="downhill">Даунхилл</option>
+                            <option value="uphill">Апхилл</option>
+                            <option value="touge">Тогэ (туда-обратно)</option>
+                            <option value="time-attack">Time Attack</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Начальная точка</label>
+                    <input class="form-input" id="routeStart" placeholder="Откуда старт" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Конечная точка</label>
+                    <input class="form-input" id="routeEnd" placeholder="Куда финиш" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Длина (км)</label>
+                    <input class="form-input" type="number" step="0.1" id="routeLength" placeholder="5.8" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Описание</label>
+                    <textarea class="form-textarea" id="routeDesc" placeholder="Опишите маршрут, сложные участки, заметки..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Сложность</label>
+                    <select class="form-select" id="routeDifficulty" required>
+                        <option value="">Выберите сложность</option>
+                        <option value="easy">Лёгкий</option>
+                        <option value="medium">Средний</option>
+                        <option value="hard">Сложный</option>
+                        <option value="extreme">Экстремальный</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-submit">Добавить маршрут</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== PLACES PAGE ==================== -->
+<div class="page" id="page-places">
+    <section class="section" style="padding-top:120px">
+        <div class="section-header reveal">
+            <h2>МЕСТА <span>И ЛОКАЦИИ</span></h2>
+            <div class="divider"></div>
+            <p class="sub">場所とロケーション</p>
+        </div>
+        <div class="places-grid" id="placesGrid">
+            <!-- Generated by JS -->
+        </div>
+
+        <!-- Add Place Form -->
+        <div class="add-section reveal">
+            <h3>ДОБАВИТЬ <span>МЕСТО</span></h3>
+            <form id="placeForm" onsubmit="addPlace(event)">
+                <div class="form-group">
+                    <label class="form-label">Название места</label>
+                    <input class="form-input" id="placeName" placeholder="Например: Парковка у подножия Акины" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Регион</label>
+                        <input class="form-input" id="placeRegion" placeholder="Префектура Гумма" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Тип места</label>
+                        <select class="form-select" id="placeType" required>
+                            <option value="">Выберите тип</option>
+                            <option value="downhill">Даунхилл</option>
+                            <option value="uphill">Апхилл</option>
+                            <option value="scenic">Видовая точка</option>
+                            <option value="garage">Гараж / СТО</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Описание</label>
+                    <textarea class="form-textarea" id="placeDesc" placeholder="Опишите место, что интересного, почему стоит посетить..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Были ли вы там?</label>
+                        <select class="form-select" id="placeVisited">
+                            <option value="no">Ещё не был</option>
+                            <option value="yes">Был(а)!</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Оценка</label>
+                        <select class="form-select" id="placeRating">
+                            <option value="5">★★★★★ (5)</option>
+                            <option value="4">★★★★☆ (4)</option>
+                            <option value="3">★★★☆☆ (3)</option>
+                            <option value="2">★★☆☆☆ (2)</option>
+                            <option value="1">★☆☆☆☆ (1)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Теги</label>
+                    <div class="place-form-tags" id="placeTags">
+                        <span class="place-form-tag" data-tag="дрифт" onclick="togglePlaceTag(this)">дрифт</span>
+                        <span class="place-form-tag" data-tag="ночь" onclick="togglePlaceTag(this)">ночь</span>
+                        <span class="place-form-tag" data-tag="шпильки" onclick="togglePlaceTag(this)">шпильки</span>
+                        <span class="place-form-tag" data-tag="скорость" onclick="togglePlaceTag(this)">скорость</span>
+                        <span class="place-form-tag" data-tag="закат" onclick="togglePlaceTag(this)">закат</span>
+                        <span class="place-form-tag" data-tag="тоге" onclick="togglePlaceTag(this)">тоге</span>
+                        <span class="place-form-tag" data-tag="евробит" onclick="togglePlaceTag(this)">евробит</span>
+                        <span class="place-form-tag" data-tag="лёгальный" onclick="togglePlaceTag(this)">лёгальный</span>
+                    </div>
+                </div>
+                <button type="submit" class="form-submit">Добавить место</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>INITIAL <span>D</span></h3>
+            <p>Трибьют легендарному аниме, вдохновившему поколение уличных гонщиков. От горных перевалов Гуммы до экранов по всему миру.</p>
+        </div>
+        <div class="footer-links">
+            <h4>НАВИГАЦИЯ</h4>
+            <ul>
+                <li><a onclick="navigate('home')">Главная</a></li>
+                <li><a onclick="navigate('accounts')">Аккаунты</a></li>
+                <li><a onclick="navigate('routes')">Маршруты</a></li>
+                <li><a onclick="navigate('places')">Места</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>РЕСУРСЫ</h4>
+            <ul>
+                <li><a onclick="navigate('routes')">Добавить маршрут</a></li>
+                <li><a onclick="navigate('places')">Добавить место</a></li>
+                <li><a onclick="navigate('accounts')">Профили</a></li>
+                <li><a>О проекте</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 INITIAL D — ТРИБЬЮТ — 頭文字D</p>
+    </div>
+</footer>
+<script src="/assets/scrirt/js.js"></script>
+</body>
+</html>
