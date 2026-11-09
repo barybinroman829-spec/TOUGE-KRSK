@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOUGE KRSK — Аккаунты</title>
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-roboto@3.0.3/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-orbitron@4.0.0/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="loader" id="loader"><div class="loader-text">TOUGE KRSK</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+    <canvas id="speedCanvas"></canvas>
+    <div class="notification" id="notification"><div class="notification-title" id="notifTitle"></div><div class="notification-text" id="notifText"></div></div>
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-logo">TOUGE <span>KRSK</span></a>
+        <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="accounts.html" class="active">Аккаунты</a></li>
+            <li><a href="routes.html">Маршруты</a></li>
+            <li><a href="places.html">Места</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <section class="section" style="padding-top:120px">
+            <div class="section-header reveal">
+                <h2>АККАУНТЫ <span>ГОНЩИКОВ</span></h2>
+                <div class="divider"></div>
+                <p class="sub">ドライバーのアカウント</p>
+            </div>
+            <div class="accounts-grid" id="accountsGrid"></div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><h3>TOUGE <span>KRSK</span></h3><p>Сообщество горных гонщиков.</p></div>
+            <div class="footer-links"><h4>НАВИГАЦИЯ</h4><ul><li><a href="index.html">Главная</a></li><li><a href="accounts.html">Аккаунты</a></li><li><a href="routes.html">Маршруты</a></li><li><a href="places.html">Места</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2024 TOUGE KRSK</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
