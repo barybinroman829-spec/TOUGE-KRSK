@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOUGE KRSK — Вход</title>
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-roboto@3.0.3/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fontsource-orbitron@4.0.0/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="loader" id="loader"><div class="loader-text">TOUGE KRSK</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+    <canvas id="speedCanvas"></canvas>
+    <div class="notification" id="notification"><div class="notification-title" id="notifTitle"></div><div class="notification-text" id="notifText"></div></div>
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-logo">TOUGE <span>KRSK</span></a>
+        <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="accounts.html">Аккаунты</a></li>
+            <li><a href="routes.html">Маршруты</a></li>
+            <li><a href="places.html">Места</a></li>
+            <li><a href="login.html" class="active">Вход</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <section class="section auth-section">
+            <div class="auth-container reveal">
+                <div class="auth-header">
+                    <h2>ДОСТУП <span>ВОДИТЕЛЯ</span></h2>
+                    <p class="sub">ドライバーアクセス</p>
+                </div>
+                
+                <div class="form-toggle">
+                    <button class="toggle-btn active" onclick="switchAuthMode('login')">Вход</button>
+                    <button class="toggle-btn" onclick="switchAuthMode('register')">Регистрация</button>
+                </div>
+
+                <!-- Форма входа -->
+                <form id="loginForm" class="auth-form" onsubmit="handleAuth(event, 'login')">
+                    <div class="form-group">
+                        <label class="form-label">Имя гонщика / Email</label>
+                        <input class="form-input" type="text" placeholder="Ник" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Пароль</label>
+                        <input class="form-input" type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="form-submit">Войти в систему</button>
+                </form>
+
+                <!-- Форма регистрации -->
+                <form id="registerForm" class="auth-form hidden" onsubmit="handleAuth(event, 'register')">
+                    <div class="form-group">
+                        <label class="form-label">Имя гонщика</label>
+                        <input class="form-input" type="text" placeholder="Ник" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input class="form-input" type="email" placeholder="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Пароль</label>
+                        <input class="form-input" type="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Подтвердите пароль</label>
+                        <input class="form-input" type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="form-submit">Создать аккаунт</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom"><p>© 2024 TOUGE KRSK — 頭文字D</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

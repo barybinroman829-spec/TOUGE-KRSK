@@ -394,3 +394,45 @@ renderAccounts();
 renderRoutes();
 renderPlaces();
 populateDriverSelect();
+
+// ===== AUTH LOGIC =====
+function switchAuthMode(mode) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const btns = document.querySelectorAll('.toggle-btn');
+
+    if (mode === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        btns[0].classList.add('active');
+        btns[1].classList.remove('active');
+    } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        btns[0].classList.remove('active');
+        btns[1].classList.add('active');
+    }
+}
+
+function handleAuth(e, type) {
+    e.preventDefault();
+    
+    // Имитация задержки сети
+    const submitBtn = e.target.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'ЗАГРУЗКА...';
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+        if (type === 'login') {
+            showNotification('Успешный вход', 'Добро пожаловать обратно, гонщик.');
+            // Здесь можно добавить редирект: window.location.href = 'accounts.html';
+        } else {
+            showNotification('Регистрация', 'Аккаунт создан. Добро пожаловать в Project D.');
+        }
+        
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        e.target.reset();
+    }, 1500);
+}
